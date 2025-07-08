@@ -8,9 +8,15 @@
     "strict": true,
     "skipLibCheck": true,
     "noEmit": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".", // your project root
+    "paths": {
+      "@/*": [
+        "src/mastra/*"
+      ]
+    }
   },
   "include": [
     "src/**/*"
-  ]
+  ],
 }

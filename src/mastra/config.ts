@@ -1,18 +1,38 @@
 import dotenv from "dotenv";
 import { createOllama } from "ollama-ai-provider";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { MongoDBVector } from "@mastra/mongodb";
+import { Memory } from "@mastra/memory";
+import { LibSQLStore } from "@mastra/libsql";
 
-// Load environment variables once at the beginning
 dotenv.config();
 
-// Export all your environment variables
-// Defaults to Ollama qwen2.5:1.5b
-// https://ollama.com/library/qwen2.5
-export const modelName = process.env.MODEL_NAME_AT_ENDPOINT ?? "qwen2.5:1.5b";
-export const baseURL = process.env.API_BASE_URL ?? "http://127.0.0.1:11434/api";
+export const modelName = process.env.MODEL_NAME_AT_ENDPOINT ?? "qwen3:0.6b ";
+export const baseURL = process.env.API_BASE_URL ?? "http://127.0.0.1:11434";
+export const google_api_key = process.env.GEMINI_API_KEY;
 
-// Create and export the model instance
-export const model = createOllama({ baseURL }).chat(modelName, {
+export const reasoningModel = createOllama({ baseURL }).chat(modelName, {
   simulateStreaming: true,
 });
 
-console.log(`ModelName: ${modelName}\nbaseURL: ${baseURL}`);
+const google = createGoogleGenerativeAI({
+  apiKey: google_api_key,
+});
+
+export const embedModel = google.textEmbeddingModel("text-embedding-004");
+
+export const vectorStore = new MongoDBVector({
+  uri: process.env.MONGO_URL!,
+  dbName: "nosana",
+});
+
+await vectorStore.createIndex({
+  indexName: "docs",
+  dimension: 768,
+});
+
+export const libSQLMemory = new Memory({
+  storage: new LibSQLStore({
+    url: "file:./mastra.db",
+  }),
+});

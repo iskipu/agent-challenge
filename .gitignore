@@ -1,6 +1,10 @@
 output.txt
+.env
 node_modules
 dist
 .mastra
+weather-agent
 *.db
 *.db-*
+bun.lock
+.vscode
