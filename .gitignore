@@ -1,5 +1,5 @@
 output.txt
-.env
+.env.local
 node_modules
 dist
 .mastra
@@ -8,3 +8,4 @@ weather-agent
 *.db-*
 bun.lock
 .vscode
+agent_nos_jb_prod.json

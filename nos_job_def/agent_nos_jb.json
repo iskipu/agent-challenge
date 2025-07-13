@@ -1,7 +1,16 @@
 {
+  "global": {
+    "image": "ubuntu",
+    "gpu": true,
+    "entrypoint": "/bin/bash",
+    "env": {
+      "MY_VAR": "value"
+    },
+    "work_dir": "/workspace"
+  },
   "ops": [
     {
-      "id": "agents",
+      "id": "Agent NOS",
       "args": {
         "gpu": true,
         "image": "docker.io/yourusername/agent-challenge:latest",

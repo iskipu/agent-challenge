@@ -10,7 +10,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Environment files
-.env
+# .env
 .env.local
 .env.*.local
 
@@ -48,3 +48,4 @@ coverage/
 .nyc_output/
 *.test.js
 *.spec.js
+**/agent_nos_jb_prod.json
