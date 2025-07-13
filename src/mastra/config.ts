@@ -6,8 +6,8 @@ import { LibSQLStore } from "@mastra/libsql";
 
 dotenv.config();
 
-export const modelName = process.env.MODEL_NAME_AT_ENDPOINT ?? "qwen3:0.6b ";
-export const baseURL = process.env.API_BASE_URL ?? "http://127.0.0.1:11434";
+export const modelName = process.env.MODEL_NAME_AT_ENDPOINT ?? "qwen3:0.6b";
+export const baseURL = process.env.API_BASE_URL ?? "http://127.0.0.1:11434/api";
 
 export const reasoningModel = createOllama({ baseURL }).chat(modelName, {
   simulateStreaming: true,
