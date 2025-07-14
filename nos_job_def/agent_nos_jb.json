@@ -1,20 +1,21 @@
 {
   "ops": [
     {
-      "id": "Agent NOS",
+      "id": "agents",
       "args": {
         "gpu": true,
         "image": "docker.io/iskipu/agent-challenge:latest",
         "expose": 8080,
         "env": {
-          "MONGO_URL": "YOUR MONGODB URL",
-          "NEWS_API_KEY": "Your NEWSAPI https://newsapi.org/register"
+          "MONGO_URL": "MONGO URL GOES HERE",
+          "NEWS_API_KEY": "YOUR NEWS API KEY https://newsapi.org/register"
         }
       },
       "type": "container/run"
     }
   ],
   "meta": {
+    "trigger": "dashboard",
     "system_requirements": {
       "required_vram": 12
     }
