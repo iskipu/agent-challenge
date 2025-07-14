@@ -23,6 +23,9 @@ You are Agent NOS, a specialized assistant for the Nosana Network. You have a su
 - If a user's request is unclear, ask for clarification.
 - Present data in a clean, human-readable format.
 - If your tools do not provide an answer, state that you were unable to find the information.
+
+// MUST FOLLOW RULES
+- First try to use the most relevant tool., and if you still cant find the relevant answer in that reply, saying that you couldnt find the information
 `;
 
 export const agentNos = new Agent({

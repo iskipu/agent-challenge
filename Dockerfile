@@ -22,9 +22,8 @@ RUN pnpm install
 # Copy the rest of the application
 COPY . .
 
-ENV MODEL_NAME_AT_ENDPOINT=qwen2.5:7b
 # Override the default entrypoint
 ENTRYPOINT ["/bin/sh", "-c"]
 
 # Start Ollama service and pull the model, then run the app
-CMD ["ollama serve & sleep 5 && ollama pull ${MODEL_NAME_AT_ENDPOINT} && pnpm run dev"]
+CMD ["cp .env.docker .env && source .env && ollama serve & sleep 5 && ollama pull ${REASONING_MODEL_NAME_AT_ENDPOINT} && ollama pull ${EMBEDING_MODEL_NAME_AT_ENDPOINT} && pnpm run dev"]

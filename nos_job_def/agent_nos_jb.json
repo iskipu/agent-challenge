@@ -1,35 +1,22 @@
 {
-  "global": {
-    "image": "ubuntu",
-    "gpu": true,
-    "entrypoint": "/bin/bash",
-    "env": {
-      "MY_VAR": "value"
-    },
-    "work_dir": "/workspace"
-  },
   "ops": [
     {
       "id": "Agent NOS",
       "args": {
         "gpu": true,
-        "image": "docker.io/yourusername/agent-challenge:latest",
-        "expose": [
-          {
-            "port": 8080
-          }
-        ],
-        "entrypoint": [
-          "/bin/sh"
-        ]
+        "image": "docker.io/iskipu/agent-challenge:latest",
+        "expose": 8080,
+        "env": {
+          "MONGO_URL": "YOUR MONGODB URL",
+          "NEWS_API_KEY": "Your NEWSAPI https://newsapi.org/register"
+        }
       },
       "type": "container/run"
     }
   ],
   "meta": {
-    "trigger": "dashboard",
     "system_requirements": {
-      "required_vram": 4
+      "required_vram": 12
     }
   },
   "type": "container",
